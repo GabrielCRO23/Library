@@ -1,0 +1,19 @@
+body {
+    background-color: rgb(64, 88, 88);
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    border-radius: 8px;
+    font-size: 30px;
+    height: 70px;
+}
