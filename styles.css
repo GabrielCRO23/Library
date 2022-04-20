@@ -38,3 +38,7 @@ form {
 #popUp {
   display: none;
 }
+
+.removeButton {
+  margin-top: 50px;
+}

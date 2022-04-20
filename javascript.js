@@ -65,6 +65,7 @@ function createBook(item) {
     const authorDiv = document.createElement('div');
     const pagesDiv = document.createElement('div');
     const readDiv = document.createElement('button'); // This one has to be a button so a user can change the input after the book element is created.
+    const removeButton = document.createElement('button')
 
     bookDiv.classList.add('book');
     bookDiv.setAttribute('id', myLibrary.indexOf(item));
@@ -97,8 +98,16 @@ function createBook(item) {
     readDiv.classList.add('read');
     bookDiv.appendChild(readDiv);
 
+    removeButton.innerText = 'REMOVE'
+    removeButton.classList.add('removeButton');
+    bookDiv.appendChild(removeButton);
+
+    removeButton.addEventListener('click', function() {
+        myLibrary.splice(myLibrary.indexOf(item),1);
+        saveAndRender();
+    })
 
     libraryContainer.appendChild(bookDiv);
 }
 
-    render(); // Added this after adding the local storage, the render function has to be called by itself in order to display previous book cards pulled from local storage after a page refresh
+    render();
