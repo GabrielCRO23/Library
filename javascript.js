@@ -92,7 +92,7 @@ function createBook(item) {
 
     readDiv.addEventListener("click", function() {
         item.read = !item.read
-        render(); // To change the button, the render function is needed to be called again so that this createBook function can be called
+        saveAndRender(); // To change the button, the save + render function is needed to be called again so that this createBook function can be called and so the status of the button can be saved
 })
 
     readDiv.classList.add('read');
