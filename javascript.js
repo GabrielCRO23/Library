@@ -8,6 +8,7 @@ addButton.addEventListener("click", function() {
     popUp.style.display = 'block'
 });
 
+const LOCAL_STORAGE_KEY = 'library.cards'
 
 
 // This is the object constructor for the books that takes in 4 parameters
@@ -18,7 +19,8 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 // myLibrary is the array that will store the objects (books), newBook is the variable that will store the books generated from the constructor, which will then be pushed into the myLibrary array
-let myLibrary = []
+// myLibrary will display an empty array, OR whatever is the local storage. The local storage is derived from the saveStorage function
+let myLibrary = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []
 let newBook;
 
 
@@ -31,9 +33,18 @@ function addBookToLibrary() {
     const read = document.getElementById('read').checked;
     newBook = new Book(title, author, pages, read)
     myLibrary.push(newBook);
-    render();
+    saveAndRender();
     form.reset();
     
+}
+
+function saveStorage() {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(myLibrary))
+}
+
+function saveAndRender() {
+    saveStorage();
+    render()
 }
 
 // This is the function that will display the form submissions on the website
@@ -90,4 +101,4 @@ function createBook(item) {
     libraryContainer.appendChild(bookDiv);
 }
 
-    
+    render(); // Added this after adding the local storage, the render function has to be called by itself in order to display previous book cards pulled from local storage after a page refresh
