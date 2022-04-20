@@ -67,8 +67,8 @@ function createBook(item) {
     const readDiv = document.createElement('button'); // This one has to be a button so a user can change the input after the book element is created.
     const removeButton = document.createElement('button')
 
-    bookDiv.classList.add('book');
-    bookDiv.setAttribute('id', myLibrary.indexOf(item));
+    bookDiv.classList.add('book'); //  Just adds a class of "book" to the newly created div, same pattern follows for all the created elements
+    bookDiv.setAttribute('id', myLibrary.indexOf(item)); // Attribute is set so it can b removed with the remove button
 
     titleDiv.textContent = item.title;
     titleDiv.classList.add('title');
